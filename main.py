@@ -1,11 +1,4 @@
 
-width_1 = 0
-height_2 = 0
-matrix_1 = []
-matrix_2 = []
-matrix_3 = []
-row_length = 0
-
 
 def print_matrix(matrix):
     for y in range(len(matrix)):
@@ -14,7 +7,10 @@ def print_matrix(matrix):
         print("")
 
 
-def create_matrix(matrix):
+def create_matrix():
+
+    matrix = []
+
     while True:
         matrix.append(input().split(","))
         print("Next row ? y/n")
@@ -24,47 +20,66 @@ def create_matrix(matrix):
             print("Enter next row:")
         else:
             break
+    return matrix
 
 
-def multiply():
+def multiply(matrix1, matrix2):
 
+    # convert matrices to int
+    matrix1 = [list(map(int, i)) for i in matrix1]
+    matrix2 = [list(map(int, i)) for i in matrix2]
+
+    matrix3 = []
     temp_list = []
     temp_number = 0
 
-    for z in range(len(matrix_2)):
-        for y in range(len(matrix_1)):
-            for x in range(len(matrix_1[y])):
-                temp_number += matrix_1[z][x]*matrix_2[x][y]
+    for z in range(len(matrix2)):
+        for y in range(len(matrix1)):
+            for x in range(len(matrix1[y])):
+                temp_number += matrix1[z][x]*matrix2[x][y]
             temp_list.append(temp_number)
             temp_number = 0
-        matrix_3.append(temp_list)
+        matrix3.append(temp_list)
         temp_list = []
 
+    return matrix3
 
-go = True
 
-while go:
+while True:
+    while True:
+        print("\n\nWelcome to matrix multiplier! Enter your matrix rows as "
+              "comma separated lists e.g. 10,2,3,14,5,etc..."
+              "\nFirst matrix row:")
+        matrix_1 = create_matrix()
 
-    print("\n\nWelcome to matrix multiplier! Enter your matrix rows as comma separated lists e.g. 10,2,3,14,5,etc..."
-          "\nFirst matrix row:")
-    create_matrix(matrix_1)
+        print("Now for the second matrix, first row:")
+        matrix_2 = create_matrix()
 
-    print("Matrix 1:")
+        # compare width v height
+        width_1 = len(matrix_1[0])
+        height_2 = len(matrix_2)
+
+        if width_1 != height_2:
+            print("Your dimensions are invalid for matrix multiplication, start over.")
+            continue
+        else:
+            break
+
+    print("Multiplying")
+    print_matrix(matrix_1)
+    print("with")
     print_matrix(matrix_1)
 
-    print("Now for the second matrix, first row:")
-    create_matrix(matrix_2)
-
-    print("Matrix 2:")
-    print_matrix(matrix_2)
-
-    matrix_1 = [list(map(int, i)) for i in matrix_1]
-    matrix_2 = [list(map(int, i)) for i in matrix_2]
-
-    multiply()
-
     print("Result:")
-    print_matrix(matrix_3)
+    print_matrix(multiply(matrix_1, matrix_2))
+
+    print("Do another multiplication? y/n")
+    go_again = input()
+
+    if go_again == "Y" or go_again == "y":
+        continue
+    else:
+        break
 
 
 
