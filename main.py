@@ -45,6 +45,22 @@ def multiply(matrix1, matrix2):
     return matrix3
 
 
+def row_checker(matrix1, matrix2):
+
+    m1_length = len(matrix1[0])
+    m2_length = len(matrix2[0])
+
+    for y in range(len(matrix1)):
+            if len(matrix1[y]) != m1_length:
+                return False
+
+    for y in range(len(matrix2)):
+            if len(matrix2[y]) != m2_length:
+                return False
+
+    return True
+
+
 while True:
     while True:
         print("\n\nWelcome to matrix multiplier! Enter your matrix rows as "
@@ -59,8 +75,12 @@ while True:
         width_1 = len(matrix_1[0])
         height_2 = len(matrix_2)
 
-        if width_1 != height_2:
-            print("Your dimensions are invalid for matrix multiplication, start over.")
+        if width_1 != height_2 or row_checker(matrix_1, matrix_2) is False:
+            print("Your dimensions are invalid for matrix multiplication. Cannot multiply")
+            print_matrix(matrix_1)
+            print("with")
+            print_matrix(matrix_2)
+            print("Start over..")
             continue
         else:
             break
