@@ -25,7 +25,7 @@ def create_matrix():
 
 def multiply(matrix1, matrix2):
 
-    # convert matrices to int
+    # Convert matrices to int
     matrix1 = [list(map(int, i)) for i in matrix1]
     matrix2 = [list(map(int, i)) for i in matrix2]
 
