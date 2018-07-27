@@ -66,10 +66,10 @@ while True:
         print("\n\nWelcome to matrix multiplier! Enter matrix rows as "
               "comma separated lists e.g. 10,14,5,etc..."
               "\nMatrices must be in the form A*B where the amount of columns in matrix A = the amount of rows in B. "
-              "\nFirst matrix row:")
+              "\nFirst row in matrix A:")
         matrix_1 = create_matrix()
 
-        print("Now for the second matrix, first row:")
+        print("Now for matrix B, first row:")
         matrix_2 = create_matrix()
 
         # compare width v height
