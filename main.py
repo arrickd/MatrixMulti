@@ -1,4 +1,4 @@
-
+import time
 
 def print_matrix(matrix):
     for y in range(len(matrix)):
@@ -33,9 +33,9 @@ def multiply(matrix1, matrix2):
     temp_list = []
     temp_number = 0
 
-    for z in range(len(matrix2)):
-        for y in range(len(matrix1)):
-            for x in range(len(matrix1[y])):
+    for z in range(len(matrix1)):
+        for y in range(len(matrix2)):
+            for x in range(len(matrix2[y])):
                 temp_number += matrix1[z][x]*matrix2[x][y]
             temp_list.append(temp_number)
             temp_number = 0
@@ -63,8 +63,9 @@ def row_checker(matrix1, matrix2):
 
 while True:
     while True:
-        print("\n\nWelcome to matrix multiplier! Enter your matrix rows as "
-              "comma separated lists e.g. 10,2,3,14,5,etc..."
+        print("\n\nWelcome to matrix multiplier! Enter matrix rows as "
+              "comma separated lists e.g. 10,14,5,etc..."
+              "\nMatrices must be in the form A*B where the amount of columns in matrix A = the amount of rows in B. "
               "\nFirst matrix row:")
         matrix_1 = create_matrix()
 
@@ -88,7 +89,9 @@ while True:
     print("Multiplying")
     print_matrix(matrix_1)
     print("with")
-    print_matrix(matrix_1)
+    print_matrix(matrix_2)
+
+    time.sleep(1)
 
     print("Result:")
     print_matrix(multiply(matrix_1, matrix_2))
@@ -100,6 +103,7 @@ while True:
         continue
     else:
         break
+
 
 
 
