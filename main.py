@@ -1,4 +1,4 @@
-import time
+
 
 def print_matrix(matrix):
     for y in range(len(matrix)):
@@ -90,8 +90,6 @@ while True:
     print_matrix(matrix_1)
     print("with")
     print_matrix(matrix_2)
-
-    time.sleep(1)
 
     print("Result:")
     print_matrix(multiply(matrix_1, matrix_2))
